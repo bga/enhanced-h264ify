@@ -28,6 +28,10 @@
     "message": "Блокувати AV1"
   },
 
+  "optionsBlockWebM": {
+    "message": "Блокувати WebM"
+  },
+
   "optionsDisableLN": {
     "message": "Вимкнути нормалізацію гучності"
   }

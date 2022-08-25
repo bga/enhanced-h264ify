@@ -28,6 +28,10 @@
     "message": "Block AV1"
   },
 
+  "optionsBlockWebM": {
+    "message": "Block WebM"
+  },
+
   "optionsDisableLN": {
     "message": "Disable Loudness Normalization"
   }

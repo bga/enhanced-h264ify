@@ -24,7 +24,6 @@
  */
 
 function inject () {
-
   override();
 
   function override() {
@@ -58,6 +57,9 @@ function inject () {
       }
       if (localStorage['enhanced-h264ify-block_av1'] === 'true') {
         disallowed_types.push('av01');
+      }
+      if (localStorage['enhanced-h264ify-block_webm'] === 'true') {
+        disallowed_types.push('webm');
       }
 
       // If video type is in disallowed_types, say we don't support them
