@@ -21,9 +21,8 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.youtube.com/*",
-        "*://*.youtube-nocookie.com/*",
-        "*://*.youtu.be/*"
+        "http://*/*", 
+        "https://*/*"
       ],
       "js": [
         "src/inject/inject.js",
