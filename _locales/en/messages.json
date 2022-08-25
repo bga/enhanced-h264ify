@@ -8,6 +8,10 @@
     "message": "enhanced-h264ify"
   },
 
+  "optionsDebugVerbosityLevel": {
+    "message": "Debug verbosity level"
+  },
+
   "optionsBlock60fps": {
     "message": "Block 60fps video"
   },

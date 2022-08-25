@@ -1,5 +1,6 @@
 // Saves options to chrome.storage
 function save_options() {
+  var debugVerbosityLevel = document.getElementById('debugVerbosityLevel').value;
   var block_60fps = document.getElementById('block_60fps').checked;
   var block_h264 = document.getElementById('block_h264').checked;
   var block_vp8 = document.getElementById('block_vp8').checked;
@@ -9,6 +10,7 @@ function save_options() {
   // LN stands for Loudness Normalization
   var disable_LN = document.getElementById('disable_LN').checked;
   chrome.storage.local.set({
+    debugVerbosityLevel: debugVerbosityLevel, 
     block_60fps: block_60fps,
     block_h264: block_h264,
     block_vp8: block_vp8,
@@ -23,6 +25,7 @@ function save_options() {
 function restore_options() {
   // Default values
   chrome.storage.local.get({
+    debugVerbosityLevel: 0, 
     block_60fps: false,
     block_h264: false,
     block_vp8: true,
@@ -31,6 +34,7 @@ function restore_options() {
     block_webm: true,
     disable_LN: false
   }, function(options) {
+    document.getElementById('debugVerbosityLevel').value = options.debugVerbosityLevel;
     document.getElementById('block_60fps').checked = options.block_60fps;
     document.getElementById('block_h264').checked = options.block_h264;
     document.getElementById('block_vp8').checked = options.block_vp8;
@@ -49,6 +53,7 @@ var checkboxes = document.getElementsByClassName('checkbox');
 for (var i = 0; i < checkboxes.length; i++) {
   checkboxes[i].addEventListener('click', save_options)
 }
+document.getElementById('debugVerbosityLevel').addEventListener('change', save_options)
 
 // l10n
 for (let element of document.querySelectorAll('[data-l10n-id]')) {

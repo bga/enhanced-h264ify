@@ -28,6 +28,9 @@
 // script into the DOM.
 
 // Set defaults for options stored in localStorage
+if (localStorage['enhanced-h264ify-debugVerbosityLevel'] === undefined) {
+  localStorage['enhanced-h264ify-debugVerbosityLevel'] = 0;
+}
 if (localStorage['enhanced-h264ify-block_60fps'] === undefined) {
   localStorage['enhanced-h264ify-block_60fps'] = false;
 }
@@ -56,6 +59,7 @@ if (localStorage['enhanced-h264ify-disable_LN'] === undefined) {
 // See https://bugs.chromium.org/p/chromium/issues/detail?id=54257
 chrome.storage.local.get({
   // Set defaults
+  debugVerbosityLevel: 0,
   block_60fps: false,
   block_h264: false,
   block_vp8: true,
@@ -64,6 +68,7 @@ chrome.storage.local.get({
   block_webm: true,
   disable_LN: false
  }, function(options) {
+   localStorage['enhanced-h264ify-debugVerbosityLevel'] = options.debugVerbosityLevel;
    localStorage['enhanced-h264ify-block_60fps'] = options.block_60fps;
    localStorage['enhanced-h264ify-block_h264'] = options.block_h264;
    localStorage['enhanced-h264ify-block_vp8'] = options.block_vp8;

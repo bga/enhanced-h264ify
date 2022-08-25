@@ -8,6 +8,10 @@
     "message": "Možnosti enhanced-h264ify"
   },
 
+  "optionsDebugVerbosityLevel": {
+    "message": "Debug verbosity level"
+  },
+
   "optionsBlock60fps": {
     "message": "Blokovat 60fps videa"
   },

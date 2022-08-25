@@ -26,6 +26,13 @@
 function inject () {
   override();
 
+  function debugPrint(verbosityLevel, ...args) {
+    var maxVerbosity = localStorage['enhanced-h264ify-debugVerbosityLevel'];
+    if(verbosityLevel <= maxVerbosity) {
+      console.log.apply(console, ['enhanced-h264ify :: ', ...args]);
+    }
+  }
+
   function override() {
     // Override video element canPlayType() function
     var videoElem = document.createElement('video');
@@ -64,16 +71,24 @@ function inject () {
 
       // If video type is in disallowed_types, say we don't support them
       for (var i = 0; i < disallowed_types.length; i++) {
-        if (type.indexOf(disallowed_types[i]) !== -1) return '';
+        if (type.indexOf(disallowed_types[i]) !== -1) {
+          debugPrint(1, 'block type ' + type);
+          return '';
+        }
       }
 
       if (localStorage['enhanced-h264ify-block_60fps'] === 'true') {
         var match = /framerate=(\d+)/.exec(type);
-        if (match && match[1] > 30) return '';
+        if (match && match[1] > 30) {
+          debugPrint(1, 'block 60fps');
+          return '';
+        } 
       }
 
       // Otherwise, ask the browser
-      return origChecker(type);
+      const ret = origChecker(type);
+      debugPrint(1, 'pass type ' + type, 'ret = ' + ret);
+      return ret;
     };
   }
 }
